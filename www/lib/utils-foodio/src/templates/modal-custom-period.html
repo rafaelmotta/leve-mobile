@@ -1,0 +1,36 @@
+<div class="modal-header">
+  <h4 class="modal-title">Escolher período</h4>
+</div>
+<div class="modal-body clearfix">
+  <div class="row">
+    <div class="col-md-6" ng-click="ctrl.open('fromDate')">
+      <div class="input-group">
+        <input ng-model="period.fromDate" datepicker-options="options" uib-datepicker-popup="dd/MM/yyyy" is-open="status.fromDate" disabled />
+        <div class="input-group-addon">
+          <i class="fa fa-calendar"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6" ng-click="ctrl.open('toDate')">
+      <div class="input-group">
+        <input ng-model="period.toDate" datepicker-options="options" uib-datepicker-popup="dd/MM/yyyy" is-open="status.toDate" disabled />
+        <div class="input-group-addon">
+          <i class="fa fa-calendar"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-md-6">
+      <timepicker ng-model="period.fromTime" readonly-input="true" hour-step="1" minute-step="15" show-meridian="false" prevent-table="true" style="margin: 0 auto;"></timepicker>
+    </div>
+    <div class="col-md-6">
+      <timepicker ng-model="period.toTime" readonly-input="true" hour-step="1" minute-step="15" show-meridian="false" prevent-table="true" style="margin: 0 auto;"></timepicker>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-default" type="button" ng-click="ctrl.close()">Cancelar</button>
+  <button class="btn btn-success" ng-click="ctrl.next()">Próximo</button>
+</div>

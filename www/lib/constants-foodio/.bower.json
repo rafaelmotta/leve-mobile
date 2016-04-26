@@ -1,0 +1,32 @@
+{
+  "name": "constants-foodio",
+  "authors": [
+    "Rafael Motta <rafaelmotta021@gmail.com>"
+  ],
+  "description": "Contants for foodio project",
+  "main": "dist/ngConstants.js",
+  "moduleType": [
+    "es6"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/rafaelmotta/constants-foodio",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7"
+  },
+  "_release": "780453700c",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "780453700c36151078711218056d84b8d353da7c"
+  },
+  "_source": "https://github.com/rafaelmotta/constants-foodio.git",
+  "_target": "*",
+  "_originalSource": "constants-foodio"
+}

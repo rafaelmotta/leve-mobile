@@ -1,0 +1,33 @@
+{
+  "name": "store-api-client-foodio",
+  "authors": [
+    "Rafael Motta <rafaelmotta021@gmail.com>"
+  ],
+  "description": "AngularJS rest client api",
+  "main": "store-api-client-foodio.js",
+  "moduleType": [
+    "es6"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "constants-foodio": "*"
+  },
+  "homepage": "https://github.com/rafaelmotta/store-api-client-foodio",
+  "_release": "00458a7bbb",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "00458a7bbb498b4b9ef50f77be3e71083ad6d9fc"
+  },
+  "_source": "https://github.com/rafaelmotta/store-api-client-foodio.git",
+  "_target": "*",
+  "_originalSource": "store-api-client-foodio",
+  "_direct": true
+}

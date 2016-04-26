@@ -1,0 +1,36 @@
+<ion-view view-title="Cardápio">
+  <ion-content>
+    <div class="list">
+      <div ng-repeat="category in categories">
+        <div ng-repeat="subcategory in category.subcategories">
+          <div class="item item-divider">
+            {{ subcategory.name }}
+          </div>
+          <div class="item" ng-repeat="product in subcategory.products" ng-click="ctrl.showProductModal(product)">
+            <div>{{ product.name }}</div>
+            <span class="badge badge-positive">
+              {{ product.price | currency: "R$" }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+
+
+<script id="product-customization.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar>
+      <h1 class="title">{{ product.name }}</h1>
+       <button class="button button-clear button-primary" ng-click="ctrl.close()">Cancel</button>
+    </ion-header-bar>
+    <ion-content>
+      <div class="list">
+        <div class="item item-divider">
+          {{ addonCategory.name }}
+        </div>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>

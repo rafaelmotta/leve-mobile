@@ -1,0 +1,19 @@
+{
+  "name": "utils-foodio",
+  "version": "1.0.0",
+  "description": "A collection with angularjs resources to help with foodio applications",
+  "main": "./utils.foodio.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rafael Michels Motta",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.8.6",
+    "gulp-babel": "v5.2.1",
+    "gulp-concat": "^2.3.4",
+    "gulp-ng-html2js": "^0.2.0",
+    "gulp-template-compile": "^1.0.0",
+    "gulp-uglify": "^0.3.1"
+  }
+}

@@ -1,0 +1,65 @@
+<div class="modal-header">
+  <h4 class="modal-title">Software de impressão</h4>
+</div>
+<div class="modal-body">
+  <div class="alert alert-danger" ng-show="socket && socket.disconnected">
+    Software de impressão está ativo mas não há conexão
+  </div>
+  <div ng-show="!socket">
+    <div class="alert alert-warning">
+      <p>Software de impressão está inativo.</p>
+      <p>
+        Clique <a href="#" ng-click="ctrl.toggleOptions()">aqui</a>
+        para
+        <span ng-hide="options.show">exibir</span>
+        <span ng-show="options.show">esconder</span>
+        as opções avançadas.
+      </p>
+    </div>
+    <div ng-show="options.show">
+      <hr />
+      <form class="form-horizontal">
+        <form-group label="Nome" required="true">
+          <input type="number" ng-model="options.port" />
+          <p class="help-block">Porta do socket do programa</p>
+        </form-group>
+      </form>
+      </div>
+  </div>
+  <div ng-show="socket.connected">
+    <div class="alert alert-info">
+      Software de impressão está ativo e ouvindo pedidos de impressão
+    </div>
+    <hr />
+    <table>
+    <thead>
+      <tr>
+        <th style="width: 30%;">Nome</th>
+        <th style="width: 15%;">IP</th>
+        <th style="width: 15%;">Porta</th>
+        <th style="width: 15%;">Padrão</th>
+        <th style="width: 15%;">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="p in printers | orderBy: 'order'" ng-click="ctrl.choosePrinter(p)" ng-class="{ success: printer.id === p.id }">
+        <td>{{ p.name }}</td>
+        <td>{{ p.ip }}</td>
+        <td>{{ p.port }}</td>
+        <td><i class="fa" ng-class="{ 'fa-check': p.default, 'fa-remove': !p.default }"></i></td>
+        <td class="table-actions">
+          <button class="btn btn-xs btn-default" uib-tooltip="Impressão de teste" tooltip-placement="top" ng-click="ctrl.print(p, $event);">
+            <i class="fa fa-print"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-success" ng-click="ctrl.connect()" ng-show="!socket">Conectar</button>
+  <button class="btn btn-danger" ng-click="ctrl.disconnect()" ng-show="socket && !choosingPrinter">Desconectar</button>
+  <button class="btn btn-danger" ng-click="ctrl.next()" ng-show="choosingPrinter" ng-disabled="!printer">Escolher</button>
+  <button class="btn btn-default" ng-click="ctrl.close()">Fechar</button>
+</div>

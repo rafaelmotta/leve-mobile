@@ -1,0 +1,10 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="ctrl.close()"><span aria-hidden="true">&times;</span></button>
+  <h4 class="modal-title">Recorte a imagem</h4>
+</div>
+<div class="modal-body">
+  <img ng-src="{{ imgToCrop }}" ng-cropper ng-cropper-options="options" alt="Imagem a ser recortada" ng-cropper-show="showEvent" />
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="ctrl.crop()" loading-spinner>Salvar</button>
+</div>

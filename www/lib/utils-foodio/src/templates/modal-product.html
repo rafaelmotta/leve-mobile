@@ -1,0 +1,90 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" ng-click="ctrl.close()"><span aria-hidden="true">&times;</span></button>
+  <div class="modal-title">
+    <i class="fa fa-shopping-cart"></i>
+    {{ product.name }}
+  </div>
+  <div class="product-total-price">
+    {{ cartItem.total | currency: "R$" }}
+  </div>
+</div>
+
+<div class="modal-body clearfix">
+
+  <aside class="pull-left">
+    <img class="product-image img-thumbnail" ng-src="{{ product.img.medium }}" width="280" height="280" alt="Foto do produto com nome {{ product.name }}">
+    <p class="product-description">
+      <i class="fa fa-shopping-cart"></i>
+      {{ product.name }}
+    </p>
+    <p class="product-description">
+      <i class="fa fa-money"></i>
+      A partir de {{ product.price | currency: "R$" }}
+    </p>
+  </aside>
+
+  <div class="product-options pull-right">
+
+    <label>Descrição:</label>
+    <blockquote ng-show="product.description" ng-bind-html="product.description"></blockquote>
+    <hr />
+    <label for="cart-item-amount">Selecione a quantidade:</label>
+    <select id="cart-item-amount" ng-model="cartItem.amount" ng-options="i as i for i in [1,2,3,4,5,6,7,8,9,10]"></select>
+
+    <hr ng-show="product.addon_categories.length > 0">
+
+    <div ng-repeat="addonCategory in product.addon_categories" class="addon-categories-list">
+
+      <div class="addon-category-name">
+        {{ addonCategory.name }}
+        <small ng-show="!addonCategory.max && !addonCategory.min">Escolha quantos ingredientes desejar</span></small>
+        <small ng-show="!addonCategory.max && addonCategory.min">
+          Escolha pelo menos {{ addonCategory.min }} <span ng-show="addonCategory.min === 1">ingrediente</span><span ng-show="addonCategory.min > 1">ingredientes</span>
+        </small>
+        <small ng-show="addonCategory.max">
+          <span ng-show="addonCategory.max === 1 && addonCategory.min === 1 || addonCategory.max === 1 && !addonCategory.min">Escolha ao menos 1 ingrediente</span>
+          <span ng-show="addonCategory.max > 1 && addonCategory.min >= 1">Escolha entre {{ addonCategory.min }} à {{ addonCategory.max }} ingredientes</span>
+          <span ng-show="addonCategory.max > 1 && !addonCategory.min">Escolha até {{ addonCategory.max }} ingredientes</span>
+        </small>
+      </div>
+
+      <div class="addons-list">
+        <div ng-repeat="addon in addonCategory.addons" class="addon-item">
+          <label ng-if="(addonCategory.max === 1 && addonCategory.min === 1) || (addonCategory.max === 1 && !addonCategory.min) || (!addonCategory.max && addonCategory.min === 1)"
+            ng-disabled="!addon.available">
+            <input type="radio" ng-disabled="!addon.available" ng-value="addon.id"  ng-model="cartItem.customization_fields[addonCategory.id]">
+            {{ addon.name }}
+            <span class="addon-price" ng-show="addon.price > 0 && addon.available">({{ addon.price | currency: "R$" }})</span>
+            <span class="addon-unavailable" ng-show="!addon.available">Ingrediente não disponível</span>
+          </label>
+          <label ng-if="(addonCategory.max > 1 || addonCategory.min > 1) || (!addonCategory.max && !addonCategory.min)"
+            ng-disabled="!addon.available">
+            <input type="checkbox" ng-disabled="!addon.available" ng-model="cartItem.customization_fields[addonCategory.id][addon.id]" ng-init="cartItem.customization_fields[addonCategory.id][addon.id] = cartItem.customization_fields[addonCategory.id][addon.id] && addon.available ? true : false" />
+            {{ addon.name }}
+            <span class="addon-price" ng-show="addon.price > 0 && addon.available">({{ addon.price | currency: "R$" }})</span>
+            <span class="addon-unavailable" ng-show="!addon.available">Ingrediente não disponível</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+    <label for="cart-item-note">Deseja fazer alguma observação?</label>
+    <textarea id="cart-item-note" rows="3" ng-model="cartItem.note"></textarea>
+    <limit maxlength="150" model="cartItem.note"></limit>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button class="btn btn-success" ng-click="ctrl.add()" ng-show="!isEditing">
+    <i class="fa fa-plus-square"></i>
+    Adicionar
+  </button>
+  <button class="btn btn-success" ng-click="ctrl.add()" ng-show="isEditing">
+    <i class="fa fa-pencil"></i>
+    Confirmar edição
+  </button>
+  <button class="btn btn-default" ng-click="ctrl.close()">
+    Cancelar
+  </button>
+</div>

@@ -1,0 +1,25 @@
+{
+  "name": "utils-foodio",
+  "version": "0.0.1",
+  "authors": [
+    "Rafael Motta <rafaelmotta021@gmail.com>"
+  ],
+  "description": "A collection with angular js directives",
+  "main": "utils.foodio.js",
+  "moduleType": [
+    "es6"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ngstorage": "~0.3.0",
+    "constants-foodio": "*",
+    "moment": "~2.10.6"
+  }
+}

@@ -1,0 +1,27 @@
+<ion-view view-title="Registrar">
+  <ion-content>
+    <form ng-submit="ctrl.submit()" name="form">
+      <div class="padding">
+        <label class="item item-input">
+          <span class="input-label">Nome</span>
+          <input type="text" ng-model="costumer.name" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Celular</span>
+          <input type="number" ng-model="costumer.cellphone" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Email</span>
+          <input type="email" ng-model="costumer.email" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Senha</span>
+          <input type="password" ng-model="costumer.password" required>
+        </label>
+        <button class="button button-block button-outline button-balanced" type="submit" ng-disabled="form.$invalid">Registrar</button>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>
+
+

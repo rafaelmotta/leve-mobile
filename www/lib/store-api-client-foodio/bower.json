@@ -1,0 +1,23 @@
+{
+  "name": "store-api-client-foodio",
+  "version": "0.0.1",
+  "authors": [
+    "Rafael Motta <rafaelmotta021@gmail.com>"
+  ],
+  "description": "AngularJS rest client api",
+  "main": "store-api-client-foodio.js",
+  "moduleType": [
+    "es6"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "constants-foodio": "*"
+  }
+}

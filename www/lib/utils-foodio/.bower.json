@@ -1,0 +1,35 @@
+{
+  "name": "utils-foodio",
+  "authors": [
+    "Rafael Motta <rafaelmotta021@gmail.com>"
+  ],
+  "description": "A collection with angular js directives",
+  "main": "utils.foodio.js",
+  "moduleType": [
+    "es6"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ngstorage": "~0.3.0",
+    "constants-foodio": "*",
+    "moment": "~2.10.6"
+  },
+  "homepage": "https://github.com/rafaelmotta/utils-foodio",
+  "_release": "e7e924b720",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "e7e924b720ac673ca1ac2f56dd27adfb343c6928"
+  },
+  "_source": "https://github.com/rafaelmotta/utils-foodio.git",
+  "_target": "*",
+  "_originalSource": "utils-foodio",
+  "_direct": true
+}

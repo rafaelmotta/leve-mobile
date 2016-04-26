@@ -1,0 +1,14 @@
+<div class="form-group" >
+  <div ng-if="!vertical">
+    <label for="{{ id }}" class="col-sm-4 control-label">{{ label }}
+      <span ng-show="required" tooltip="Campo obrigatório" class="required-marker">*</span>
+    </label>
+    <div class="col-sm-8" ng-transclude></div>
+  </div>
+  <div ng-if="vertical">
+    <label for="{{ id }}" class="control-label">{{ label }}
+      <span ng-show="required" tooltip="Campo obrigatório" class="required-marker">*</span>
+    </label>
+    <div ng-transclude></div>
+  </div>
+</div>

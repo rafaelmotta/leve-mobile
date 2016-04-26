@@ -1,0 +1,30 @@
+<div class="modal-header">
+  <h4 class="modal-title">
+    Avaliar pedido
+  </h4>
+</div>
+<div class="modal-body">
+  <p>1. Em uma escala de 1 a 10, sendo 1 altamente improvavel e 10 altamente provavel, qual a probabilidade de você indicar o speedy food a um amigo(a)?</p>
+  <uib-rating ng-model="rating.score" max="10" state-on="'fa fa-star fa-star-filled'" state-off="'fa fa-star-o'"></uib-rating>
+  <hr />
+  <p>2. Qual a nota você daria para qualidade dos nossos produtos?</p>
+  <uib-rating ng-model="rating.quality" max="10" state-on="'fa fa-star fa-star-filled'" state-off="'fa fa-star-o'"></uib-rating>
+  <hr />
+  <p>3. Qual a nota você daria para nosso serviço de entrega?</p>
+  <uib-rating ng-model="rating.delivery" max="10" state-on="'fa fa-star fa-star-filled'" state-off="'fa fa-star-o'"></uib-rating>
+  <hr /
+  <p>4. Há algo que você não gostou que gostaria de registrar?</p>
+  <textarea ng-model="rating.good_comment" rows="4" placeholder="Deixe em branco se você não tiver nenhum comentário"></textarea>
+  <hr />
+  <p>5. Há algo que você gostou que gostaria de registrar?</p>
+  <textarea ng-model="rating.bad_comment" rows="4" placeholder="Deixe em branco se você não tiver nenhum comentário"></textarea>
+  </div>
+<div class="modal-footer">
+  <button class="btn btn-success" ng-click="ctrl.save()">
+    <i class="fa fa-pencil"></i>
+    Confirmar edição
+  </button>
+  <button class="btn btn-default" ng-click="ctrl.close()">
+    Cancelar
+  </button>
+</div>

@@ -1,0 +1,16 @@
+{
+  "development": {
+    "constants": {
+      "api": "http://devfoodio.com.br",
+      "static": "https://s3-sa-east-1.amazonaws.com/speedy-development",
+      "pusher": "7b202b83e5f7f923c100"
+    }
+  },
+  "production": {
+    "constants": {
+      "api": "https://api-foodio.herokuapp.com",
+      "static": "https://s3-sa-east-1.amazonaws.com/foodio",
+      "pusher": "40140f701bdcca1e51d8"
+    }
+  }
+}

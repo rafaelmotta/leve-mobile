@@ -1,0 +1,35 @@
+<div class="modal-header">
+  <h4 class="modal-title" ng-hide="address.id">Adicionar</h4>
+  <h4 class="modal-title" ng-show="address.id">Editar</h4>
+</div>
+<div class="modal-body clearfix">
+  <form name="addressForm" class="form-horizontal" ng-submit="ctrl.submit()">
+    <form-group label="Nome" required="true">
+      <input type="text" tabindex="1" ng-model="address.name" autofocus />
+    </form-group>
+    <form-group label="CEP" required="true">
+      <input type="text" tabindex="2" ng-model="address.zipcode" required mask="99999-999" auto-unmask="true" zipcode zipcode-model="address" />
+    </form-group>
+    <form-group label="Cidade" required="true">
+      <input type="text" tabindex="3" ng-model="address.city.name" disabled required />
+    </form-group>
+    <form-group label="Bairro" required="true">
+      <input type="text" tabindex="4" ng-model="address.neighborhood.name" disabled required />
+    </form-group>
+    <form-group label="Rua" required="true">
+      <input type="text" tabindex="5" ng-model="address.street" disabled required />
+    </form-group>
+    <form-group label="Número" required="true">
+      <input type="text" tabindex="6" ng-model="address.number" required />
+    </form-group>
+    <form-group label="Complemento">
+      <textarea ng-model="address.complement" tabindex="7" rows="3"></textarea>
+    </form-group>
+    <div class="modal-footer">
+      <button class="btn btn-success" loading-spinner>
+        Salvar
+      </button>
+      <button class="btn btn-default" type="button" ng-click="ctrl.close()">Cancelar</button>
+    </div>
+  </form>
+</div>

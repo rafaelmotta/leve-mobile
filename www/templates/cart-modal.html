@@ -1,0 +1,19 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Carrinho de compras</h1>
+     <button class="button button-clear button-primary" ng-click="appCtrl.close()">Cancelar</button>
+  </ion-header-bar>
+  <ion-content>
+    <ion-list>      
+      <ion-checkbox ng-model="addon.selected" ng-repeat="addon in ctrl.getCurrentAddonCategory().addons">
+        {{ addon.name }}
+        <span class="badge badge-positive">
+          {{ addon.price | currency: "R$" }}
+        </span>
+      </ion-checkbox>
+    </ion-list>
+    <button class="button button-full button-positive" ng-click="ctrl.goToNextAddonCategory()">
+      {{ctrl.getNextButtonText()}}
+    </button>
+  </ion-content>
+</ion-modal-view>

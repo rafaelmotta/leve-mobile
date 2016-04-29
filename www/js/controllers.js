@@ -9,10 +9,6 @@ angular.module('starter.controllers', [])
     $scope.modal = modal;
   });
 
-  this.close = function() {
-    $scope.modal.hide();
-  };
-
   this.openCart = function(){
     $scope.modal.show();
   };
@@ -26,6 +22,53 @@ angular.module('starter.controllers', [])
       // Redireciona para página de login
       $state.go('app.menu');
     });
+  };
+})
+
+.controller('cartController', function($rootScope, $scope){
+
+  this.plusQuantity = function(product){
+    product.quantity++;
+  }
+
+  this.minusQuantity = function(product){
+    console.log(product);
+    product.quantity--;
+    if(product.quantity <= 1){
+      console.log('perguntar para remover o produto');
+      product.quantity = 1; //por enquanto não remove
+    }      
+  }
+
+  this.getDeliveryValue = function(){
+    return 0;
+  }
+
+  this.getTotalValue = function(){
+    var total = 0;
+    angular.forEach($rootScope.cart, function(value, key) {
+      var totalProduct = parseFloat(value.price);
+      for(var i=0; i< value.addon_categories.length; i++){
+        var category = value.addon_categories[i];
+        for(var j=0; j< category.addons.length; j++){
+          var addon = category.addons[j];
+          if(addon.selected){
+            totalProduct += parseFloat(addon.price);
+          }
+        }
+      }
+      total += totalProduct * value.quantity;
+    });
+
+    return total;
+  };
+
+  this.getProducts = function(){
+    return $rootScope.cart;
+  };
+
+  this.close = function() {
+    $scope.modal.hide();
   };
 })
 
@@ -105,7 +148,7 @@ angular.module('starter.controllers', [])
         else
           selecteds[1].selected = false;
       }
-    }
+    }    
   };
 
   this.getNextButtonText = function(){
@@ -113,7 +156,7 @@ angular.module('starter.controllers', [])
       return;
 
     if($scope.currentAddonCategoryIndex >= $scope.product.addon_categories.length-1)
-      return "Finalizar";
+      return "Adicionar ao carrinho";
 
     return "Próximo";
   };
@@ -122,10 +165,21 @@ angular.module('starter.controllers', [])
     if($scope.currentAddonCategoryIndex >= $scope.product.addon_categories.length-1){
       if(!$rootScope.cart)
         $rootScope.cart = [];
-      $rootScope.cart.push(angular.copy($scope.product));
+      $scope.product.quantity = 1;
+      $rootScope.cart.push($scope.product);
       $scope.modal.hide();
       $scope.currentAddonCategoryIndex = 0;      
+      $scope.errorMessage = '';
+      $scope.showError = false;
     }else{
+      var selecteds = $scope.getSelectedItems();
+      if(ctrl.getCurrentAddonCategory().min && selecteds.length < ctrl.getCurrentAddonCategory().min){
+        $scope.errorMessage = 'Quantidade mínima não informada';
+        $scope.showError = true;
+        return false;
+      }
+      $scope.errorMessage = '';
+      $scope.showError = false;
       $scope.currentAddonCategoryIndex++;
     }
   };

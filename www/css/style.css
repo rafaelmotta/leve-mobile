@@ -1,1 +1,16 @@
 /* Empty. Add your own CSS if you like */
+.ion-icon.ion-plus-circled.balanced{
+	font-size: 25px;
+}
+
+.ion-icon.ion-minus-circled.assertive{
+	font-size: 25px;
+}
+
+.footer-bar-cart{
+	height: 140px;
+}
+
+.cart-content{
+	bottom: 140px;
+}

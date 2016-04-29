@@ -15,9 +15,12 @@
         </span>
       </ion-checkbox>
     </ion-list>
+    <div ng-show="showError" style="color:red;" class="text-center">
+      <i class="icon ion-alert-circled error"></i>
+        {{errorMessage}}
+    </div>
     <button class="button button-full button-positive" ng-click="ctrl.goToNextAddonCategory()">
       {{ctrl.getNextButtonText()}}
-    </button>
-
+    </button>    
   </ion-content>
 </ion-modal-view>

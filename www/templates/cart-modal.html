@@ -1,19 +1,49 @@
-<ion-modal-view>
-  <ion-header-bar>
+<ion-modal-view ng-controller="cartController as ctrl">
+  <ion-header-bar class="bar-balanced">
     <h1 class="title">Carrinho de compras</h1>
-     <button class="button button-clear button-primary" ng-click="appCtrl.close()">Cancelar</button>
+     <button class="button button-clear button-primary" ng-click="ctrl.close()">Cancelar</button>
   </ion-header-bar>
-  <ion-content>
-    <ion-list>      
-      <ion-checkbox ng-model="addon.selected" ng-repeat="addon in ctrl.getCurrentAddonCategory().addons">
-        {{ addon.name }}
-        <span class="badge badge-positive">
-          {{ addon.price | currency: "R$" }}
-        </span>
-      </ion-checkbox>
-    </ion-list>
-    <button class="button button-full button-positive" ng-click="ctrl.goToNextAddonCategory()">
-      {{ctrl.getNextButtonText()}}
-    </button>
+  <ion-content class="cart-content">
+    <ion-list>
+      <ion-item class="item-text-wrap" ng-repeat="product in ctrl.getProducts()">
+        <div class="row">
+          <div class="col col-75">
+            {{product.quantity}}x {{product.name}} - {{product.price | currency}}
+            <ul class="lst">
+                <li ng-repeat="category in product.addon_categories">
+                  <strong>{{category.name}}</strong>
+                  <ul class="lst">
+                    <li ng-repeat="addon in category.addons | filter:{selected: true}">
+                      - {{addon.name}} - {{addon.price | currency}}
+                    <li>
+                  </ul>
+                <li>
+            </ul>
+          </div>
+          <div class="col col-25" style="font-size: 20px;">
+            <i ng-click="ctrl.minusQuantity(product)" class="ion-icon ion-minus-circled assertive"></i>
+              {{product.quantity}} 
+            <i ng-click="ctrl.plusQuantity(product)" class="ion-icon ion-plus-circled balanced"></i>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>        
   </ion-content>
+  <ion-footer-bar class="bar-balanced footer-bar-cart">
+    <div class="row">
+      <div class="col">
+        <div class="row">
+          <div class="col col-75">Entrega:</div>
+          <div class="col col-25">{{ctrl.getDeliveryValue() | currency}}</div>
+        </div>
+        <div class="row">
+          <div class="col col-75">Total:</div>
+          <div class="col col-25">{{ctrl.getTotalValue() | currency}}</div>
+        </div>
+        <button class="button button-block button-positive" ng-click="ctrl.goToNextAddonCategory()">
+          Pagamento
+        </button>
+      </div>
+    </div>
+  </ion-footer-bar>
 </ion-modal-view>
